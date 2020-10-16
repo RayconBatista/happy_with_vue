@@ -26,6 +26,16 @@
             <i class="fas fa-plus" style="font-size: 32px; color: #fff"></i>
         </router-link>
         <l-tile-layer :url="url"></l-tile-layer>
+        <l-marker :lat-lng={markerLatLng}></l-marker>
+
+
+
+
+
+
+
+
+        
     </l-map>
 
 </div>
@@ -34,8 +44,12 @@
 <script>
 import {
     LMap,
-    LTileLayer
+    LTileLayer,
+    LMarker
 } from 'vue2-leaflet';
+
+import iconUrl from '../../src/assets/images/local.png'
+
 export default {
     components: {
         LMap,
@@ -43,9 +57,10 @@ export default {
     },
     data() {
         return {
-            url: `https://https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.VUE_APP_MAPBOX_TOKEN}`,
+            url: `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.VUE_APP_MAPBOX_TOKEN}`,
             zoom: 15,
             center: [-2.9752219, -60.018212],
+            markerLatLng: [-2.9752219, -60.018212],
             bounds: null
         };
     },

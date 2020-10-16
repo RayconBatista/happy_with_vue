@@ -40,9 +40,9 @@
     font-weight: 800;
 }
 
-/* #page-map .leaflet-container {
+#page-map .leaflet-container {
     z-index: 5;
-} */
+}
 
 #page-map .create-orphanage {
     position: absolute;
@@ -50,7 +50,7 @@
     bottom: 40px;
     text-decoration: none;
 
-    /* z-index: 10; */
+    z-index: 99;
 
     width: 64px;
     height: 64px;
