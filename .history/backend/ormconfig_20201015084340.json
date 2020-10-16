@@ -1,0 +1,19 @@
+{
+    "type": "mysql",
+    "host": "mysql_happy",
+    "port": 3306,
+    "username": "root",
+    "password": "root",
+    "database": "app_happy",
+    "synchronize": false,
+    "logging": false,
+    "entities": [
+      "./src/models/*.ts"
+    ],
+    "migrations": [
+       "./src/database/migrations/*.ts"
+    ],
+    "cli": {
+       "migrationsDir": "./src/database/migrations"
+    }
+ }

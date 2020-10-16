@@ -7,4 +7,5 @@
 <style>
   @import url('../src/assets/css/global.css');
   @import url('../src/assets/css/style.css');
+
 </style>
