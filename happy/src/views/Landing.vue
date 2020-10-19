@@ -1,4 +1,3 @@
-
 <template>
     <div id="page-landing">
         <div class="content-wrapper">
