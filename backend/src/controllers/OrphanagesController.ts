@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import Orphanage from '../models/Orphanage';
-import orphanageView from '../views/orphanages_view';
+import orphanagesView from '../views/orphanages_view';
 import * as Yup from 'yup';
 
 export default {
@@ -13,7 +13,9 @@ export default {
             relations: ['images']
         });
 
-        return response.json(orphanageView.renderMany(orphanages));
+        return response.json({
+            result: orphanagesView.renderMany(orphanages)
+        });
 
     },
 
@@ -27,15 +29,11 @@ export default {
             relations: ['images']
         });
 
-        return response.json(orphanageView.render(orphanage));
+        return response.json({ result: orphanagesView.render(orphanage)});
 
     },
 
     async create(request: Request, response: Response) {
-
-        console.log(request.files);
-        
-
         const {
             name,
             latitude,
@@ -44,12 +42,12 @@ export default {
             instructions,
             open_hours,
             open_on_weekends,
-        } = request.body;
+        } = request.body;       
     
         const orphanagesRepository = getRepository(Orphanage);
 
         const requestImg = request.files as Express.Multer.File[];
-
+        
         const images = requestImg.map(image => {
             return { path: image.filename}
         })
@@ -61,7 +59,7 @@ export default {
             about,
             instructions,
             open_hours,
-            open_on_weekends,
+            open_on_weekends: open_on_weekends === 'true',
             images
         };
 
@@ -73,9 +71,11 @@ export default {
             instructions: Yup.string().required(),
             open_hours: Yup.string().required(),
             open_on_weekends: Yup.boolean().required(),
-            images: Yup.array(Yup.object().shape({
-                path: Yup.string().required()
-            }))
+            images: Yup.array(
+                Yup.object().shape({
+                    path: Yup.string().required().min(1),
+                })
+            )
         })
 
         await schema.validate(data, {

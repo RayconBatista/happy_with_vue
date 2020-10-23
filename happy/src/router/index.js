@@ -12,21 +12,33 @@ const routes = [
   {
     path: '/',
     name: 'Landing',
+    meta: {
+      title: 'Landing'
+    },
     component: Landing
   },
   {
-    path: '/app',
-    name: 'OrphanagesMap',
+    path: '/orphanages',
+    name: 'Orphanages',
+    meta: {
+      title: 'Map'
+    },
     component: OrphanagesMap
   },
   {
-    path: '/orphanages/create',
+    path: '/orphanage/create',
     name: 'CreateOrphanage',
+    meta: {
+      title: 'Cadastro'
+    },
     component: CreateOrphanage
   },
   {
     path: '/orphanage/:id',
     name: 'OrphanageID',
+    meta: {
+      title: 'Orfanato'
+    },
     component: Orphanage
   },
 ]
@@ -35,6 +47,14 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if(to.meta.title) {
+    document.title = to.meta.title
+  }
+
+  next()
 })
 
 export default router

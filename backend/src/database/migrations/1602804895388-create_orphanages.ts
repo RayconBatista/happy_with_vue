@@ -47,6 +47,11 @@ export class createOrphanages1602804895388 implements MigrationInterface {
                     type: 'boolean',
                     default: false
                 },
+                {
+                  name: 'created_at',
+                  type: 'timestamp',
+                  default: 'now()'
+                }
             ]
         }))
     }
