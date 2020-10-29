@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: '/orphanages',
-    name: 'Orphanages',
+    name: 'OrphanagesMap',
     meta: {
       title: 'Map'
     },

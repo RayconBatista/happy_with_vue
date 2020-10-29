@@ -22,9 +22,12 @@
         @update:center="centerUpdated" 
         @update:bounds="boundsUpdated">
 
-        <router-link :to="{name: ''}" class="create-orphanage">
-            <i class="fas fa-plus" style="font-size: 32px; color: #fff"></i>
-        </router-link>
+        <l-control position="bottomright" >
+            <router-link :to="{name: 'CreateOrphanage'}" class="create-orphanage">
+                <i class="fas fa-plus" style="font-size: 32px; color: #fff"></i>
+            </router-link>           
+        </l-control>
+
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker 
             v-for="item in orphanages" 
@@ -48,6 +51,7 @@ import {
     LMarker,
     LPopup,
     LIcon,
+    LControl
 } from 'vue2-leaflet';
 import axios from 'axios';
 import iconUrl from '../../src/assets/images/local.png'
@@ -59,6 +63,7 @@ export default {
         LMarker,
         LPopup,
         LIcon,
+        LControl
     },
     data() {
         return {
