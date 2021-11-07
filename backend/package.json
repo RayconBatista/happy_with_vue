@@ -1,14 +1,16 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "start":"node src/server.ts",
-    "postinstall":"tsc"
+    "start":"node dist/src/server.js",
+    "postinstall":"yarn build"
   },
+  "engines": { "node": "14" },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
