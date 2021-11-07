@@ -10,7 +10,7 @@
     "start":"node dist/src/server.js",
     "postinstall":"yarn build"
   },
-  "engines": { "node": "14" },
+  "engines": { "node": "16" },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
